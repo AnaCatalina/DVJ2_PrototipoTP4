@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class CodigoVolumen : MonoBehaviour
 {
-    float valor;
     public Slider slider;
-    public float sliderValue;
     public Image imageMute;
     // Start is called before the first frame update
     void Start()
@@ -16,17 +14,20 @@ public class CodigoVolumen : MonoBehaviour
         AudioListener.volume = slider.value;
         RevisarSiEstoyMute();
     }
+    private void Update()
+    {
+        //print("El volumen es: "+slider.value);
+    }
     public void ChangeSlider()
     {
-        sliderValue = valor;
-        PlayerPrefs.SetFloat("volumenAudio", sliderValue);
+        PlayerPrefs.SetFloat("volumenAudio", slider.value);
         AudioListener.volume = slider.value;
         RevisarSiEstoyMute();
     }
     // Update is called once per frame
     public void RevisarSiEstoyMute()
     {
-        if (sliderValue == 0)
+        if (slider.value == 0)
         {
             imageMute.enabled = true;
         }
