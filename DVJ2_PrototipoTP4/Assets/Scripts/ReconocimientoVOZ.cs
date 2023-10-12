@@ -53,96 +53,131 @@ public class ReconocimientoVOZ : MonoBehaviour
 
     private void Peatonal()
     {
-        peatonal.SetActive(false);
-        derrumbe.SetActive(true);
-        Debug.Log("respeta a los que caminan");
+        if (peatonal.activeSelf == true)
+        {
+            peatonal.SetActive(false);
+            derrumbe.SetActive(true);
+            Debug.Log("Respeta a los que cruzan la calle");
+        }        
     }
 
     private void Derrumbe()
     {
-        derrumbe.SetActive(false);
-        animal.SetActive(true);
-
-        Debug.Log("se te puede caer el cerro");
+        if (derrumbe.activeSelf == true)
+        {
+            derrumbe.SetActive(false);
+            animal.SetActive(true);
+            Debug.Log("Se te puede caer el cerro");
+        }        
     }
 
     private void Rotonda()
     {
-        rotonda.SetActive(false);
-        peatonal.SetActive(true);
+        if (rotonda.activeSelf == true)
+        {
+            rotonda.SetActive(false);
+            peatonal.SetActive(true);
+            Debug.Log("Respeta a los que caminan");
+        }        
     }
 
     private void Estacionar()
     {
-        estacionar.SetActive(false);
-        rotonda.SetActive(true);
-        Debug.Log("no estaciones aca ");
+        if (estacionar.activeSelf == true)
+        {
+            estacionar.SetActive(false);
+            rotonda.SetActive(true);
+            Debug.Log("¡No estaciones aquí!");
+        }        
     }
 
     private void Obreros()
     {
-       obreros.SetActive(false);
-        estacionar.SetActive(true);
-        Debug.Log("personas que no le temen a la pala");
+        if (obreros.activeSelf == true)
+        {
+            obreros.SetActive(false);
+            estacionar.SetActive(true);
+            Debug.Log("Personas que no le temen a la pala");
+        }        
     }
 
     private void Lomada()
     {
-       lomada.SetActive(false);
-      obreros.SetActive(true);
-        Debug.Log("anda despacio que te rompo el auto");
+        if (lomada.activeSelf == true)
+        {
+            lomada.SetActive(false);
+            obreros.SetActive(true);
+            Debug.Log("anda despacio que te rompo el auto");
+        }        
     }
 
     private void Limite()
     {
-        limite.SetActive(false);
-        lomada.SetActive(true);
-        Debug.Log("respeta la velocidad permitida gil");
+        if (limite.activeSelf == true)
+        {
+            limite.SetActive(false);
+            lomada.SetActive(true);
+            Debug.Log("respeta la velocidad permitida gil");
+        }
     }
 
     private void Escuela()
     {
-       escuela.SetActive(false);
-        limite.SetActive(true);
-        Debug.Log("cuidado con los pibes");
+        if (escuela.activeSelf == true)
+        {
+            escuela.SetActive(false);
+            limite.SetActive(true);
+            Debug.Log("cuidado con los pibes");
+        }        
     }
 
     private void Doblemano()
     {
-        doblemano.SetActive(false);
-        escuela.SetActive(true);
-        Debug.Log("estoes doblemano");
+        if (doblemano.activeSelf == true)
+        {
+            doblemano.SetActive(false);
+            escuela.SetActive(true);
+            Debug.Log("Esto es doblemano");
+        }
     }
 
     private void Contramano()
     {
-       doblemano.SetActive(true);
-        contramano.SetActive(false);
-        Debug.Log("etas en comntramano papu");
+        if (contramano.activeSelf == true)
+        {
+            contramano.SetActive(false);
+            doblemano.SetActive(true);            
+            Debug.Log("Estas en comntramano papu");
+        }
     }
 
     public void Animal()
     {
-        animal.SetActive(false);
-        camino.SetActive(true);
-       // señales[2].SetActive(false);
-      
-        Debug.Log("animales sueltos");
+        if (animal.activeSelf == true)
+        {
+            animal.SetActive(false);
+            camino.SetActive(true);
+            Debug.Log("Animales Sueltos");
+        }
+        // señales[2].SetActive(false);
+             
     }
-
-    private void keywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs commands)
-    {   
-
-        img[commands.text].Invoke();
-    }
-
-
 
     private void Camino()
     {
-       contramano.SetActive(true);
-        camino.SetActive(false);
-        Debug.Log("tene cuidado con el camino");
+        if (camino.activeSelf == true)
+        {
+            camino.SetActive(false);
+            contramano.SetActive(true);
+            Debug.Log("Ten cuidado con el camino");
+        }
+        
+    }
+
+    private void keywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs commands)
+    {
+
+        img[commands.text].Invoke();
     }
 }
      

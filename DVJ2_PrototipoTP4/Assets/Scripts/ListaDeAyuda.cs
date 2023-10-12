@@ -23,18 +23,18 @@ public class ListaDeAyuda : MonoBehaviour
     void GenerarListaDePalabras()
     {
         // Agrega palabras a la lista
-        nombres.Add("-Zona de Derrumbes");
-        nombres.Add("-Camino Sinuoso");
-        nombres.Add("-Escuela");
-        nombres.Add("-Animales Sueltos");
-        nombres.Add("-Doble Mano");
-        nombres.Add("-Rotonda");
-        nombres.Add("-Senda Peatonal");
-        nombres.Add("-Limite de Velocidad");
-        nombres.Add("-Lomo de Burro");
-        nombres.Add("-Prohibido Estacionar");
-        nombres.Add("-Contramano");
-        nombres.Add("-ObrerosTrabajando");
+        nombres.Add("-ZONA DE DERRUMBES");
+        nombres.Add("-CAMINO SINUOSO");
+        nombres.Add("-ESCUELA");
+        nombres.Add("-ANIMALES SUELTOS");
+        nombres.Add("-DOBLE MANO");
+        nombres.Add("-ROTONDA");
+        nombres.Add("-SENDA PEATONAL");
+        nombres.Add("-LÍMITE DE VELOCIDAD");
+        nombres.Add("-LOMO DE BURRO");
+        nombres.Add("-PROHIBIDO ESTACIONAR");
+        nombres.Add("-CONTRAMANO");
+        nombres.Add("-OBREROS TRABAJANDO");
     }
 
     void AleatorizarLista()
