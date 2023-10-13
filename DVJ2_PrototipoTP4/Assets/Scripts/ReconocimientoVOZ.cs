@@ -8,8 +8,8 @@ using Unity.VisualScripting;
 
 public class ReconocimientoVOZ : MonoBehaviour
 {
-   // public GeneradorDeImagenes gen;
-  //  public GameObject[] señales;
+    // public GeneradorDeImagenes gen;
+    //  public GameObject[] señales;
     public GameObject animal;
     public GameObject camino;
     public GameObject contramano;
@@ -26,13 +26,12 @@ public class ReconocimientoVOZ : MonoBehaviour
     KeywordRecognizer keywordRecognizer;
 
     Dictionary<string, Action> img = new Dictionary<string, Action>();
-   
+
+    private int palabrasReconocidas = 0;
+
     private void Start()
     {
-       
-       
-         
-        img.Add( "Animales Suelto",Animal);
+        img.Add("Animales Suelto", Animal);
         img.Add("Camino Sinuoso", Camino);
         img.Add("Contramano", Contramano);
         img.Add("Doble Mano", Doblemano);
@@ -44,11 +43,10 @@ public class ReconocimientoVOZ : MonoBehaviour
         img.Add("Rotonda", Rotonda);
         img.Add("Senda Peatonal", Peatonal);
         img.Add("Zona de Derrumbe", Derrumbe);
-       
+
         keywordRecognizer = new KeywordRecognizer(img.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += keywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
-      
     }
 
     private void Peatonal()
@@ -58,7 +56,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             peatonal.SetActive(false);
             derrumbe.SetActive(true);
             Debug.Log("Respeta a los que cruzan la calle");
-        }        
+        }
     }
 
     private void Derrumbe()
@@ -68,7 +66,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             derrumbe.SetActive(false);
             animal.SetActive(true);
             Debug.Log("Se te puede caer el cerro");
-        }        
+        }
     }
 
     private void Rotonda()
@@ -78,7 +76,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             rotonda.SetActive(false);
             peatonal.SetActive(true);
             Debug.Log("Respeta a los que caminan");
-        }        
+        }
     }
 
     private void Estacionar()
@@ -88,7 +86,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             estacionar.SetActive(false);
             rotonda.SetActive(true);
             Debug.Log("¡No estaciones aquí!");
-        }        
+        }
     }
 
     private void Obreros()
@@ -98,7 +96,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             obreros.SetActive(false);
             estacionar.SetActive(true);
             Debug.Log("Personas que no le temen a la pala");
-        }        
+        }
     }
 
     private void Lomada()
@@ -108,7 +106,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             lomada.SetActive(false);
             obreros.SetActive(true);
             Debug.Log("anda despacio que te rompo el auto");
-        }        
+        }
     }
 
     private void Limite()
@@ -128,7 +126,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             escuela.SetActive(false);
             limite.SetActive(true);
             Debug.Log("cuidado con los pibes");
-        }        
+        }
     }
 
     private void Doblemano()
@@ -146,7 +144,7 @@ public class ReconocimientoVOZ : MonoBehaviour
         if (contramano.activeSelf == true)
         {
             contramano.SetActive(false);
-            doblemano.SetActive(true);            
+            doblemano.SetActive(true);
             Debug.Log("Estas en comntramano papu");
         }
     }
@@ -160,7 +158,7 @@ public class ReconocimientoVOZ : MonoBehaviour
             Debug.Log("Animales Sueltos");
         }
         // señales[2].SetActive(false);
-             
+
     }
 
     private void Camino()
@@ -171,13 +169,49 @@ public class ReconocimientoVOZ : MonoBehaviour
             contramano.SetActive(true);
             Debug.Log("Ten cuidado con el camino");
         }
-        
+
     }
 
     private void keywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs commands)
     {
 
         img[commands.text].Invoke();
+
+        palabrasReconocidas++;
+
+        // Verifica si se han reconocido todas las palabras
+        if (palabrasReconocidas >= img.Count)
+        {
+            // Cambia de escena una vez que se han reconocido todas las palabras
+            CambioEscena();
+        }
+
+    }
+
+    void CambioEscena()
+    {
+        // Encuentra el objeto "Controlador" en la escena
+        GameObject controladorObjeto = GameObject.Find("Controlador");
+
+        // Asegúrate de que el objeto "Controlador" tiene el script "CambiarEscena" adjunto
+        if (controladorObjeto != null)
+        {
+            CambiarEscena cambiarEscenaScript = controladorObjeto.GetComponent<CambiarEscena>();
+
+            // Verifica si se encontró el script "CambiarEscena" en el objeto "Controlador"
+            if (cambiarEscenaScript != null)
+            {
+                // Llama la función "CambiarEscenas" con el nombre de la escena a la que se desea ir
+                cambiarEscenaScript.CambiarEscenas("Win");
+            }
+            else
+            {
+                Debug.LogError("El objeto Controlador no tiene el script CambiarEscena adjunto.");
+            }
+        }
+        else
+        {
+            Debug.LogError("No se encontró el objeto Controlador en la escena.");
+        }
     }
 }
-     
