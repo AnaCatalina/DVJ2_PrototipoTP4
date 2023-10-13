@@ -806,9 +806,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Eres un estudiante que est\xE1 siendo evaluado para poder obtener la licencia
     de conducir, para ello deber\xE1s decir el nombre de las se\xF1ales que se ir\xE1n
-    mostrando en el pizzarr\xF3n. Por Ejemplo: \n\n\n\nZona de Derrumbes\nAdem\xE1s
-    no te olvides que puedes decir \"Ayuda\" para que puedas obtener hasta un m\xE1ximo
-    de 3 pistas"
+    mostrando en el pizzarr\xF3n. Por Ejemplo: \n\n\n\nZona de Derrumbes\nNo te preocupes
+    si no sabes alguna, puedes decir \"Ayuda\" para que se desbloquee una lista con
+    todas las se\xF1ales."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
